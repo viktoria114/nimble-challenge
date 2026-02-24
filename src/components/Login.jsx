@@ -1,4 +1,3 @@
-import "./App.css";
 import {
   Button,
   Paper,
@@ -7,51 +6,19 @@ import {
   Box,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { useState } from "react";
-import { getCandidateByEmail, getJobs } from "./api/candidate";
+import "../App.css";
 
-function Login() {
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [candidate, setCandidate] = useState(null);
-  const [jobs, setJobs] = useState([]);
-  const [error, setError] = useState(null);
-
-  const handleSubmit = async () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
-      setError("Ingresa un correo electrónico válido.");
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      const candidateData = await getCandidateByEmail(email);
-      setCandidate(candidateData);
-      const jobsData = await getJobs();
-    setJobs(jobsData);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-    console.log(candidate);
-    console.log(jobs)
-  };
-
+const Login = ({ email, setEmail, loading, error, handleSubmit, candidate }) => {
   return (
     <>
+  
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    transform: candidate ? "translateY(-40px)" : "translateY(0)",
+}}
       >
         <Typography
           variant="h4"
@@ -93,6 +60,7 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
               variant="outlined"
               size="small"
+              placeholder="email@ejemplo.com"
               sx={{
                 width: 360,
                 ml: 2,
