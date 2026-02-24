@@ -1,0 +1,40 @@
+import axios from "axios";
+import api from "./connection";
+
+export const getCandidateByEmail = async (email) => {
+  try {
+    const res = await api.get(`/candidate/get-by-email?email=${email}`);
+    return res.data;
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      throw new Error(
+       err.response?.data?.message || "Error al obtener candidato por correo electrónico: " 
+      );
+    }
+    throw err;
+  }
+};
+
+export const postApplyToJob = async (body) => {
+  try {
+    const res = await api.post(`/candidate/apply-to-job`, body);
+    return res.data;
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      throw new Error(err.response?.data?.message || "Error al aplicar a un trabajo");
+    }
+    throw err;
+  }
+};
+
+export const getJobs = async () => {
+  try {
+    const res = await api.get(`/jobs/get-list`);
+    return res.data;
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      throw new Error(err.response?.data?.message || "Error al obtener lista de trabajos");
+    }
+    throw err;
+  }
+};
