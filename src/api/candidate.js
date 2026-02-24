@@ -1,5 +1,5 @@
 import axios from "axios";
-import api from "./connection";
+import { api } from "./connection";
 
 export const getCandidateByEmail = async (email) => {
   try {
@@ -8,7 +8,7 @@ export const getCandidateByEmail = async (email) => {
   } catch (err) {
     if (axios.isAxiosError(err)) {
       throw new Error(
-       err.response?.data?.message || "Error al obtener candidato por correo electrónico: " 
+       err.response?.data?.message || "Error al obtener información por su correo electrónico " 
       );
     }
     throw err;
