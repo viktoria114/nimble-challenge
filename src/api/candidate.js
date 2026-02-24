@@ -4,6 +4,8 @@ import { api } from "./connection";
 export const getCandidateByEmail = async (email) => {
   try {
     const res = await api.get(`/candidate/get-by-email?email=${email}`);
+    console.log(res.data);
+    
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err)) {
@@ -18,23 +20,17 @@ export const getCandidateByEmail = async (email) => {
 export const postApplyToJob = async (body) => {
   try {
     const res = await api.post(`/candidate/apply-to-job`, body);
-    return res.data;
-  } catch (err) {
-    if (axios.isAxiosError(err)) {
-      throw new Error(err.response?.data?.message || "Error al aplicar a un trabajo");
-    }
-    throw err;
-  }
-};
+        console.log(res.data);
 
-export const getJobs = async () => {
-  try {
-    const res = await api.get(`/jobs/get-list`);
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err)) {
-      throw new Error(err.response?.data?.message || "Error al obtener lista de trabajos");
+    console.log(body);
+
+        throw new Error(err.response?.data?.message || "Error al aplicar a un trabajo");
+    
     }
     throw err;
+    
   }
 };
