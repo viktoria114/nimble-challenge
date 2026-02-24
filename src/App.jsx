@@ -40,12 +40,12 @@ function App() {
     <>
       <Box
         sx={{
-          minHeight: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          overflow: "hidden",
-          flexDirection: "column",
+           minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    px: 2,
         }}
       >
         <Login

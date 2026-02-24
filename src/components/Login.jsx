@@ -17,14 +17,15 @@ const Login = ({ email, setEmail, loading, error, handleSubmit, candidate }) => 
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    transform: candidate ? "translateY(-40px)" : "translateY(0)",
+    mt: candidate ? 2 : 0,
+    mb: 4,
 }}
       >
         <Typography
-          variant="h4"
+          variant="h3"
           sx={{
-            color: "#000",
-            fontWeight: "bold",
+            color: "#c69fd5",
+            fontWeight: "1000",
             fontFamily: "Poppins, sans-serif",
           }}
         >
@@ -48,7 +49,7 @@ const Login = ({ email, setEmail, loading, error, handleSubmit, candidate }) => 
             <Typography
               variant="h6"
               sx={{
-                color: "#000",
+                color: "#ffffffff",
                 fontWeight: "400",
                 fontFamily: "Poppins, sans-serif",
               }}

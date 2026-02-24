@@ -28,8 +28,6 @@ const JobItem = ({ job, candidate }) => {
 
     try {
       setLoading(true);
-console.log(job);
-      console.log(candidate);
 
       await postApplyToJob({
         uuid: candidate.uuid,
@@ -59,7 +57,6 @@ console.log(job);
       }}
     >
       <Typography
-        key={job.id}
         variant="h6"
         sx={{ fontFamily: "Poppins, sans-serif" }}
       >
@@ -86,7 +83,7 @@ console.log(job);
       {success && (
         <Typography
           color="success.main"
-          variant="h7"
+          variant="body2"
           mt={1}
           sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "500" }}
         >

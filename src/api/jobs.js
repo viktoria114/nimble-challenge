@@ -7,7 +7,9 @@ export const getJobs = async () => {
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err)) {
-      throw new Error(err.response?.data?.message || "Error al obtener lista de trabajos");
+      throw new Error(
+        err.response?.data?.message || "Error al obtener lista de trabajos",
+      );
     }
     throw err;
   }
